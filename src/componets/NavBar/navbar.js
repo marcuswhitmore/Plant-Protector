@@ -10,7 +10,7 @@ class Navbar extends Component {
       <nav className="navbar">
         <div className="container">
           <Link className="navbar-brand" to="/landing">
-            Texas Trails
+            Plant Protector
           </Link>
           <ResponsiveMenu
             menuOpenButton={<div />}
@@ -21,7 +21,7 @@ class Navbar extends Component {
             menu={
               <ul>
                 <li>
-                  <Link to="/landing">Explore Trails</Link>
+                  <Link to="/projects">Your Plants</Link>
                 </li>
                 <li>
                   <Link to="/">Sign Out</Link>
