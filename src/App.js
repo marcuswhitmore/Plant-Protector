@@ -9,11 +9,11 @@ function App() {
   return (
     <Router>
       <div>
-        <Navbar />
+        
       
         <Route exact path="/" component={landing} />
         <Route path="/projects" component={projects} />
-        
+        <Navbar />
       </div>
     </Router>
   );
