@@ -6,10 +6,10 @@ import { Link } from "react-router-dom";
 class login extends Component {render() {
   return (
     <div>
-        <h1> Hi - user- Welcome to your digital garden</h1>
+        <h1> The user either logs in or signs up for a new account</h1>
       
-        <Button component={ Link } to="/plantpage" variant="contained" color="primary">User Login</Button>
-        <Button component={ Link } to="/signup" variant="contained" color="primary">Sign Up</Button>
+        <Button component={ Link } to="/plantpage" variant="contained" color="primary" id="login">User Login</Button>
+        <Button component={ Link } to="/signup" variant="contained" color="primary" id="login">Sign Up</Button>
 
         
       
