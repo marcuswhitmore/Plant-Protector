@@ -9,12 +9,9 @@ class Navbar extends Component {
     return (
       <nav className="navbar">
         <div className="container">
-        <Button variant="contained" color="primary">
-          <Link className="navbar-brand" to="/landing">
-            Plant Protector
-          </Link>
-          </Button>
-          <Button variant="contained" color="primary">Hello World</Button>
+        <Button component={ Link } to="/projects" variant="contained" color="primary">Plant Protector</Button>
+
+          <Button component={ Link } to="/projects" variant="contained" color="primary">Hello World</Button>
           <ResponsiveMenu
             menuOpenButton={<div />}
             menuCloseButton={<div />}
