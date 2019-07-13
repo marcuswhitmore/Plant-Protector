@@ -1,0 +1,38 @@
+span {
+  padding: 2rem;
+}
+
+.SVG {
+    text-align: center;
+  }
+  
+  .SVG-logo {
+    
+    height: 50vmin;
+    pointer-events: none;
+  }
+  
+  .SVG-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(15px + 2vmin);
+    color: white;
+    font-family: 'Lobster', cursive;
+  }
+  
+  .SVG-link {
+    color: #61dafb;
+  }
+  
+  // @keyframes SVG-logo-spin {
+  //   from {
+  //     transform: rotate(0deg);
+  //   }
+  //   to {
+  //     transform: rotate(360deg);
+  //   }
+  // }
