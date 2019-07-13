@@ -4,9 +4,9 @@ import "./style.css";
 class projects extends Component {render() {
   return (
     <div>
-        <h1>Marcus Whitmore</h1>
+        <h1> Hi - user- Welcome to your digital garden</h1>
       
-        <span> Marcus Whitmore</span>
+        <span> Cayenne Cards</span>
         
       
     </div>
