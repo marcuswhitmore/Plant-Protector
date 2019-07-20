@@ -1,27 +1,64 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import './App.css';
+import { StyleSheet, View } from 'react-native';
+import { Router, Switch, Route } from './routing';
+import Home from './Home';
+import Pokemon from './Pokemon';
 import landing from './componets/landing/';
 import plantpage from './componets/plantpage';
 import signup from './componets/signup'
-import Navbar from "./componets/NavBar/navbar"
 import login from './componets/login';
 
-function App() {
-  return (
-    <Router>
-      <div>
-        
-      
-        <Route exact path="/" component={landing} />
+export default class App extends React.Component {
+  state = {
+    selectedPokemon: null
+  };
+  selectPokemon = selectedPokemon => {
+    this.setState({
+      selectedPokemon
+    });
+  };
+  render() {
+    return (
+      <View style={styles.container}>
+        <Router>
+          <Switch>
+          <Route exact path="/" component={landing} />
         <Route path="/login" component={login} />
         <Route path="/signup" component={signup} />
         <Route path="/plantpage" component={plantpage} />
-        {/* <Navbar sticky="bottom" /> */}
-      </div>
-    </Router>
-  );
+
+
+
+            <Route
+              exact
+              path="/p"
+              render={props => (
+                <Home {...props} selectPokemon={this.selectPokemon} />
+              )}
+            />
+            <Route
+              path="/pokemon"
+              render={props => (
+                <Pokemon
+                  selectedPokemon={this.state.selectedPokemon}
+                  {...props}
+                />
+              )}
+            />
+          </Switch>
+        </Router>
+      </View>
+    );
+  }
 }
 
-
-export default App;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 50,
+    padding: 50
+  }
+});
