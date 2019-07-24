@@ -1,37 +1,44 @@
-import React from 'react';
-import { Image, ScrollView, StyleSheet } from 'react-native';
-import { ExpoLinksView } from '@expo/samples';
-//import pokemon from './pokemonStore.js';
+import React, { Component } from 'react';
+import { FlatList, Text, StyleSheet } from 'react-native';
 
+const rows = [
+  { id: 0, text: 'Pepper1' },
+  { id: 1, text: 'Pepper2' },
+  { id: 2, text: 'Pepper3' },
+  { id: 3, text: 'Pepper4' },
+  { id: 4, text: 'Pepper5' },
+]
 
+const extractKey = ({ id }) => id
 
-export default function LinksScreen() {
-  return (
-    <ScrollView style={styles.container}>
-      <Image
-          style={styles.image}
-          source={{uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'}}
-        />
-        <Image
-          style={styles.image}
-          source={{uri: 'https://facebook.github.io/react-native/docs/assets/favicon.png'}}
-        />
-    </ScrollView>
-  );
+export default class App extends Component {
+
+  renderItem = ({ item }) => {
+    return (
+      <Text style={styles.row}>
+        {item.text}
+      </Text>
+    )
+  }
+  render() {
+    return (
+      <FlatList
+        style={styles.container}
+        data={rows}
+        renderItem={this.renderItem}
+        keyExtractor={extractKey}
+      />
+    );
+  }
 }
-
-LinksScreen.navigationOptions = {
-  title: 'Links',
-};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 15,
-    backgroundColor: '#fff',
   },
-  image: {
-    width: 200,
-    height: 200,
+  row: {
+    padding: 15,
+    marginBottom: 5,
+    backgroundColor: 'skyblue',
   },
-});
+})
