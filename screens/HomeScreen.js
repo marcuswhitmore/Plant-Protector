@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { AppRegistry, View, Text, StyleSheet } from 'react-native';
+import ReactWeather from 'react-open-weather';
 
 export default class FlexDimensionsBasics extends Component {
   render() {
@@ -11,7 +12,9 @@ export default class FlexDimensionsBasics extends Component {
         <View style={{flex: 1, backgroundColor: 'powderblue'}} >
         <Text style={styles.text}> Plant App Lnding Page </Text>
         </View>
-        <View style={{flex: 2, backgroundColor: 'skyblue'}} />
+        <View style={{flex: 2, backgroundColor: 'skyblue'}} >
+        
+        </View>
         <View style={{flex: 3, backgroundColor: 'steelblue'}} />
         
       </View>

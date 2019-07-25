@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { FlatList, Text, StyleSheet } from 'react-native';
 
 const rows = [
-  { id: 0, text: 'Pepper1' },
-  { id: 1, text: 'Pepper2' },
-  { id: 2, text: 'Pepper3' },
-  { id: 3, text: 'Pepper4' },
-  { id: 4, text: 'Pepper5' },
+  { id: 0, text: 'Pepper' },
+  { id: 1, text: 'Pepper' },
+  { id: 2, text: 'Pepper' },
+  { id: 3, text: 'Pepper' },
+  { id: 4, text: 'Pepper' },
 ]
 
 const extractKey = ({ id }) => id
