@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { FlatList, Text, StyleSheet } from 'react-native';
+import { FlatList, Text, StyleSheet, Image, View } from 'react-native';
 
 const rows = [
-  { id: 0, text: 'Pepper' },
+  { id: 0, text: 'Pepper', posters: 'https://i.imgur.com/UePbdph.jpg' },
   { id: 1, text: 'Pepper' },
   { id: 2, text: 'Pepper' },
   { id: 3, text: 'Pepper' },
-  { id: 4, text: 'Pepper' },
+  { id: 4, text: 'Pepper2' },
 ]
 
 const extractKey = ({ id }) => id
@@ -15,10 +15,14 @@ export default class App extends Component {
 
   renderItem = ({ item }) => {
     return (
+  
       <Text style={styles.row}>
         {item.text}
+        {item.posters}
+        
       </Text>
-    )
+      
+    );
   }
   render() {
     return (
