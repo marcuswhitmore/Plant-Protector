@@ -1,39 +1,60 @@
 import React, { Component } from 'react';
-import { Container, Header, Content, DatePicker, Text } from 'native-base';
-export default class DatePickerExample extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { chosenDate: new Date() };
-    this.setDate = this.setDate.bind(this);
-  }
-  setDate(newDate) {
-    this.setState({ chosenDate: newDate });
-  }
+import { AppRegistry, View, Text, StyleSheet, Alert, TouchableHighlight } from 'react-native';
+import ReactWeather from 'react-open-weather';
+ 
+export default class FlexDimensionsBasics extends Component {
   render() {
     return (
-      <Container>
-        <Header />
-        <Content>
-          <DatePicker
-            defaultDate={new Date(2018, 4, 4)}
-            minimumDate={new Date(2018, 1, 1)}
-            maximumDate={new Date(2018, 12, 31)}
-            locale={"en"}
-            timeZoneOffsetInMinutes={undefined}
-            modalTransparent={false}
-            animationType={"fade"}
-            androidMode={"default"}
-            placeHolderText="Select date"
-            textStyle={{ color: "green" }}
-            placeHolderTextStyle={{ color: "#d3d3d3" }}
-            onDateChange={this.setDate}
-            disabled={false}
-            />
-            <Text>
-              Date: {this.state.chosenDate.toString().substr(4, 12)}
-            </Text>
-        </Content>
-      </Container>
+      <View style={{flex: 1, backgroundColor: '#3F4447'}}>
+        
+        <View style={{flex: 3, backgroundColor: 'skyblue'}} >
+        <TouchableHighlight style={styles.wrapper}
+          onPress={() => Alert.alert(
+            null,
+            null,
+            [
+              {text: 'Button', onPress: () => console.log('Button Pressed!')},
+              // on press send request via https to Pid
+            ]
+          )}>
+          <View style={styles.button}>
+            <Text>Device ON</Text>
+          </View>
+        </TouchableHighlight>
+        </View>
+        <View style={{flex: 3, backgroundColor: 'skyblue'}} >
+        <TouchableHighlight style={styles.wrapper}
+          onPress={() => Alert.alert(
+            null,
+            null,
+            [
+              {text: 'Button', onPress: () => console.log('Button Pressed!')},
+              // on press send request via https to Pid
+            ]
+          )}>
+          <View style={styles.button}>
+            <Text>Device OFF</Text>
+          </View>
+        </TouchableHighlight>
+        </View>
+        
+ 
+      </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  text: {
+    textAlign: 'center',
+    fontSize: 30,
+  },
+  button: {
+    backgroundColor: '#eeeeee',
+    padding: 10,
+  },
+});
+
+
+// skip this line if using Create React Native App
+AppRegistry.registerComponent('AwesomeProject', () => FlexDimensionsBasics);
