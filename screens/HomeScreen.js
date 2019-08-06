@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { AppRegistry, View, Text, StyleSheet, Alert, TouchableHighlight } from 'react-native';
-import { WeatherWidget } from 'react-native-weather';
+import { API_KEY } from '../utils/WeatherAPIKey';
+import { WeatherWidget } from 'react-native-weather'; //https://cors-anywhere.herokuapp.com/
+import './weathericon.css'
 
 export default class FlexDimensionsBasics extends Component {
   render() {
@@ -10,16 +12,15 @@ export default class FlexDimensionsBasics extends Component {
         <Text style={styles.text}> Plant Protector </Text>
         </View>
         <View style={{flex: 3, backgroundColor: 'skyblue'}} >
-        <Text style={styles.text}>Weather go info goes here</Text>
-       
+            <Text style={styles.text}>Weather go info goes here</Text>
+                
+                <WeatherWidget
+                    api={API_KEY}
+                    lat={38.575764}
+                    lng={-121.478851}
+                />
         </View>
-        <WeatherWidget
-          api={"99b722aa5365f77af4c004c0cca23ef9"}
-          lat={40.3601}
-          long={-71.0589}
-        />
         
- 
       </View>
     );
   }
