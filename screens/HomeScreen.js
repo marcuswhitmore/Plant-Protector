@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { AppRegistry, View, Text, StyleSheet, Alert, TouchableHighlight } from 'react-native';
 import { API_KEY } from '../utils/WeatherAPIKey';
 import { WeatherWidget } from 'react-native-weather'; //https://cors-anywhere.herokuapp.com/
-import './weathericon.css'
+//import './weathericon.css'
 
 export default class FlexDimensionsBasics extends Component {
   render() {
@@ -27,14 +27,14 @@ export default class FlexDimensionsBasics extends Component {
 }
 
 const styles = StyleSheet.create({
-  text: {
-    textAlign: 'center',
-    fontSize: 30,
-  },
-  button: {
-    backgroundColor: '#eeeeee',
-    padding: 10,
-  },
+    text: {
+        textAlign: 'center',
+        fontSize: 30,
+    },
+    button: {
+        backgroundColor: '#eeeeee',
+        padding: 10,
+    },
 });
 
 
