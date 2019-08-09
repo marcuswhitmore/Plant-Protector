@@ -9,7 +9,7 @@ const rows = [
   { id: 4, cultivar: 'Ghost Pepper', scoville: ' 10000 SHU' },
 ]
 
-const extractKey = ({ id }) => id
+const extractKey = ({ id}) => id.toString()
 
 export default class App extends Component {
 
