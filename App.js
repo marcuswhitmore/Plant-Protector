@@ -2,10 +2,23 @@ import { AppLoading } from 'expo';
 import { Asset } from 'expo-asset';
 import * as Font from 'expo-font';
 import React, { useState } from 'react';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
+import { Platform, StatusBar, StyleSheet, ViewStyleSheet, Text,View,TextInput, Button,TouchableHighlight,
+  Image,
+  Alert } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import * as firebase from 'firebase';
 
-
+var firebaseConfig = {
+  apiKey: "AIzaSyC3FmjDz7y6_cQE4zWrwguoCqCe7HxgT9M",
+  authDomain: "plant-protector-27ea5.firebaseapp.com",
+  databaseURL: "https://plant-protector-27ea5.firebaseio.com",
+  projectId: "plant-protector-27ea5",
+  storageBucket: "",
+  messagingSenderId: "6658779484",
+  appId: "1:6658779484:web:d7b4e231f598a527"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 //import { Lottie } from 'lottie-react-native';
 
 //mport API_KEY from '../utils/WeatherAPIKey';
@@ -14,7 +27,57 @@ import { Ionicons } from '@expo/vector-icons';
 import AppNavigator from './navigation/AppNavigator';
 
 export default function App(props) {
+ 
+
   const [isLoadingComplete, setLoadingComplete] = useState(false);
+  const [username, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [Authenticated,setAuthentication] =useState(false);
+
+  const handleInputChange = event => {
+    // Pull the name and value properties off of the event.target (the element which triggered the event)
+    const { name, value } = event.target;
+    switch (name) {
+      case 'username':
+        setUserName(value)
+        break;
+      case 'password':
+        setPassword(value)
+        break;
+      default:
+        break;
+    }
+  };
+
+
+  registerUser = event => {
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email,password)
+      .catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+      })};
+      
+      signInUser = event => {
+        
+        firebase
+          .auth()
+          .signInWithEmailAndPassword(email, password)
+          .catch(function(error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+          }).then(()=>  firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+             setAuthentication(true);
+            } else {
+              console.log("u suck");
+              console.log(email);
+        console.log(password);
+            }
+          }))};
 
   if (!isLoadingComplete && !props.skipLoadingScreen) {
     return (
@@ -24,6 +87,59 @@ export default function App(props) {
         onFinish={() => handleFinishLoading(setLoadingComplete)}
       />
     );
+  }else if(Authenticated == false) {
+    return( 
+        <View style={styles.container}>
+          <View style={styles.inputContainer}>
+            <TextInput
+            
+              value={username}
+              name="username"
+              style={styles.inputs}
+              placeholder="Email"
+              keyboardType="email-address"
+              underlineColorAndroid="transparent"
+              onChangeText={handleInputChange}
+            />
+          </View>
+  
+          <View style={styles.inputContainer}>
+            <TextInput
+            value={password}
+            name="password"
+              style={styles.inputs}
+              placeholder="Password"
+              secureTextEntry={true}
+              underlineColorAndroid="transparent"
+              onChangeText={handleInputChange}
+            />
+          </View>
+  
+          <TouchableHighlight
+            style={[styles.buttonContainer, styles.loginButton]}
+            onPress={this.signInUser}
+          >
+            <Text style={styles.loginText}>Login</Text>
+          </TouchableHighlight>
+  
+          <TouchableHighlight
+            style={styles.buttonContainer}
+            onPress={() => this.onClickListener("restore_password")}
+          >
+            <Text>Forgot your password?</Text>
+          </TouchableHighlight>
+  
+          <TouchableHighlight
+            style={styles.buttonContainer}
+            onPress={this.registerUser}
+          >
+            <Text>Register</Text>
+          </TouchableHighlight>
+        </View>
+    )
+
+    
+
   } else {
     return (
       <View style={styles.container}>
@@ -73,5 +189,43 @@ const styles = StyleSheet.create({
     },
     loadingText: {
         fontSize: 30
+    },
+    inputContainer: {
+      borderBottomColor: "#F5FCFF",
+      backgroundColor: "#FFFFFF",
+      borderRadius: 30,
+      borderBottomWidth: 1,
+      width: 250,
+      height: 45,
+      marginBottom: 20,
+      flexDirection: "row",
+      alignItems: "center"
+    },
+    inputs: {
+      height: 45,
+      marginLeft: 16,
+      borderBottomColor: "#FFFFFF",
+      flex: 1
+    },
+    inputIcon: {
+      width: 30,
+      height: 30,
+      marginLeft: 15,
+      justifyContent: "center"
+    },
+    buttonContainer: {
+      height: 45,
+      flexDirection: "row",
+      justifyContent: "center",
+      alignItems: "center",
+      marginBottom: 20,
+      width: 250,
+      borderRadius: 30
+    },
+    loginButton: {
+      backgroundColor: "#00b5ec"
+    },
+    loginText: {
+      color: "white"
     }
 });
