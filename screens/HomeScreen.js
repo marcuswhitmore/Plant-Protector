@@ -15,7 +15,7 @@ export default class FlexDimensionsBasics extends Component {
             <Text style={styles.text}>Weather go info goes here</Text>
                 
                 <WeatherWidget
-                    api={''}
+                    api={API_KEY}
                     lat={38.575764}
                     lng={-121.478851}
                 />
