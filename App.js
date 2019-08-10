@@ -6,17 +6,17 @@ import { Platform, StatusBar, StyleSheet, ViewStyleSheet, Text,View,TextInput, B
   Image,
   Alert } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import * as firebase from 'firebase';
+import firebase from './utils/firebase';
 
-var firebaseConfig = {
-  apiKey: "AIzaSyC3FmjDz7y6_cQE4zWrwguoCqCe7HxgT9M",
-  authDomain: "plant-protector-27ea5.firebaseapp.com",
-  databaseURL: "https://plant-protector-27ea5.firebaseio.com",
-  projectId: "plant-protector-27ea5",
-  storageBucket: "",
-  messagingSenderId: "6658779484",
-  appId: "1:6658779484:web:d7b4e231f598a527"
-};
+// var firebaseConfig = {
+//   apiKey: "AIzaSyC3FmjDz7y6_cQE4zWrwguoCqCe7HxgT9M",
+//   authDomain: "plant-protector-27ea5.firebaseapp.com",
+//   databaseURL: "https://plant-protector-27ea5.firebaseio.com",
+//   projectId: "plant-protector-27ea5",
+//   storageBucket: "",
+//   messagingSenderId: "6658779484",
+//   appId: "1:6658779484:web:d7b4e231f598a527"
+// };
 // Initialize Firebase
 
 //import { Lottie } from 'lottie-react-native';
@@ -25,32 +25,23 @@ var firebaseConfig = {
 //import Weather from '../components/Weather';
 
 import AppNavigator from './navigation/AppNavigator';
-firebase.initializeApp(firebaseConfig);
+
+// firebase.initializeApp(firebaseConfig);
 export default function App(props) {
+  
+  
  
 
   const [isLoadingComplete, setLoadingComplete] = useState(false);
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const [Authenticated,setAuthentication] =useState(false);
-  firebase.auth().signOut().then(function() {
-    // Sign-out successful.
-  }).catch(function(error) {
-    // An error happened.
-  });
-  var user = firebase.auth().currentUser;
-  
-  
 
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user != null) {
-      alert(user.email);
-      console.log("We are authenticated now!");
-    }
   
-    // Do other things
-  });
-  
+  var user = firebase.auth().currentUser;
+
+
+ 
+
   
   registerUser = event => {
    
@@ -81,63 +72,66 @@ export default function App(props) {
         onFinish={() => handleFinishLoading(setLoadingComplete)}
       />
     );
-  }else if(Authenticated == false) {
-    return( 
-        <View style={styles.container}>
-          <View style={styles.inputContainer}>
-            <TextInput
-            
-              value={username}
-              name="username"
-              style={styles.inputs}
-              placeholder="Email"
-              keyboardType="email-address"
-              underlineColorAndroid="transparent"
-              onChangeText={setUserName}
-            />
-          </View>
-  
-          <View style={styles.inputContainer}>
-            <TextInput
-            value={password}
-            name="password"
-              style={styles.inputs}
-              placeholder="Password"
-              secureTextEntry={true}
-              underlineColorAndroid="transparent"
-              onChangeText={setPassword}
-            />
-          </View>
-  
-          <TouchableHighlight
-            style={[styles.buttonContainer, styles.loginButton]}
-            onPress={this.signInUser}
-          >
-            <Text style={styles.loginText}>Login</Text>
-          </TouchableHighlight>
-  
-          <TouchableHighlight
-            style={styles.buttonContainer}
-            onPress={() => this.onClickListener("restore_password")}
-          >
-            <Text>Forgot your password?</Text>
-          </TouchableHighlight>
-  
-          <TouchableHighlight
-            style={styles.buttonContainer}
-            onPress={this.registerUser}
-          >
-            <Text>Register</Text>
-          </TouchableHighlight>
-        </View>
-    )
-  } else {
+  }else if(user) {
+    console.log(user.email);
     return (
       <View style={styles.container}>
         {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
         <AppNavigator />
       </View>
     );
+    
+  } else {
+    return( 
+      <View style={styles.container}>
+        <View style={styles.inputContainer}>
+          <TextInput
+          
+            value={username}
+            name="username"
+            style={styles.inputs}
+            placeholder="Email"
+            keyboardType="email-address"
+            underlineColorAndroid="transparent"
+            onChangeText={setUserName}
+          />
+        </View>
+
+        <View style={styles.inputContainer}>
+          <TextInput
+          value={password}
+          name="password"
+            style={styles.inputs}
+            placeholder="Password"
+            secureTextEntry={true}
+            underlineColorAndroid="transparent"
+            onChangeText={setPassword}
+          />
+        </View>
+
+        <TouchableHighlight
+          style={[styles.buttonContainer, styles.loginButton]}
+          onPress={this.signInUser}
+        >
+          <Text style={styles.loginText}>Login</Text>
+        </TouchableHighlight>
+
+        <TouchableHighlight
+          style={styles.buttonContainer}
+          onPress={() => this.onClickListener("restore_password")}
+        >
+          <Text>Forgot your password?</Text>
+        </TouchableHighlight>
+
+        <TouchableHighlight
+          style={styles.buttonContainer}
+          onPress={this.registerUser}
+        >
+          <Text>Register</Text>
+        </TouchableHighlight>
+      </View>
+  )
+   
   }
 }
 
