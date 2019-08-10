@@ -34,22 +34,7 @@ export default function App(props) {
   const [password, setPassword] = useState("");
   const [Authenticated,setAuthentication] =useState(false);
 
-  const handleInputChange = event => {
-    // Pull the name and value properties off of the event.target (the element which triggered the event)
-    const { name, value } = event.target;
-    switch (name) {
-      case 'username':
-        setUserName(value)
-        break;
-      case 'password':
-        setPassword(value)
-        break;
-      default:
-        break;
-    }
-  };
-
-
+  
   registerUser = event => {
     firebase
       .auth()
@@ -64,7 +49,7 @@ export default function App(props) {
         
         firebase
           .auth()
-          .signInWithEmailAndPassword(email, password)
+          .signInWithEmailAndPassword(username, password)
           .catch(function(error) {
             // Handle Errors here.
             var errorCode = error.code;
@@ -74,8 +59,6 @@ export default function App(props) {
              setAuthentication(true);
             } else {
               console.log("u suck");
-              console.log(email);
-        console.log(password);
             }
           }))};
 
@@ -99,7 +82,7 @@ export default function App(props) {
               placeholder="Email"
               keyboardType="email-address"
               underlineColorAndroid="transparent"
-              onChangeText={handleInputChange}
+              onChangeText={setUserName}
             />
           </View>
   
@@ -111,7 +94,7 @@ export default function App(props) {
               placeholder="Password"
               secureTextEntry={true}
               underlineColorAndroid="transparent"
-              onChangeText={handleInputChange}
+              onChangeText={setPassword}
             />
           </View>
   
