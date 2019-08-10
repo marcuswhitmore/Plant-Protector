@@ -18,14 +18,14 @@ var firebaseConfig = {
   appId: "1:6658779484:web:d7b4e231f598a527"
 };
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+
 //import { Lottie } from 'lottie-react-native';
 
 //mport API_KEY from '../utils/WeatherAPIKey';
 //import Weather from '../components/Weather';
 
 import AppNavigator from './navigation/AppNavigator';
-
+firebase.initializeApp(firebaseConfig);
 export default function App(props) {
  
 
@@ -33,17 +33,23 @@ export default function App(props) {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [Authenticated,setAuthentication] =useState(false);
+  
 
   
   registerUser = event => {
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(email,password)
-      .catch(function(error) {
+   
+      firebase.auth().createUserWithEmailAndPassword(username, password).catch(function(error) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
-      })};
+      }).then(()=>  firebase.auth().onAuthStateChanged(function(user) {
+        console.log(user);
+        if (user != null) {
+         setAuthentication(true);
+        } else {
+          console.log("u suck");
+        }
+      }))};
       
       signInUser = event => {
         
@@ -55,7 +61,7 @@ export default function App(props) {
             var errorCode = error.code;
             var errorMessage = error.message;
           }).then(()=>  firebase.auth().onAuthStateChanged(function(user) {
-            if (user) {
+            if (user !=null) {
              setAuthentication(true);
             } else {
               console.log("u suck");
