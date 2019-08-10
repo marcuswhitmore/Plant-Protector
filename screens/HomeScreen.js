@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
-import { AppRegistry, View, Text, StyleSheet, Alert, TouchableHighlight } from 'react-native';
+import { AppRegistry, View, Text, StyleSheet, Alert, TouchableHighlight, Image } from 'react-native';
 import { API_KEY } from '../utils/WeatherAPIKey';
 import { WeatherWidget } from 'react-native-weather'; //https://cors-anywhere.herokuapp.com/
+import ImagesExample from '../assets/ImageDisplay/image_example';
 //import './weathericon.css'
 
 export default class FlexDimensionsBasics extends Component {
   render() {
     return (
-      <View style={{flex: 1, backgroundColor: '#3F4447'}}>
+      <View style={{flex: 1, backgroundColor: '#3F4447' }}>
         <View style={{flex: 1, backgroundColor: 'powderblue'}} >
         <Text style={styles.text}> Plant Protector </Text>
+
+        <ImagesExample/>
+
         </View>
-        <View style={{flex: 3, backgroundColor: 'skyblue'}} >
+           <View style={{ flex: 3, backgroundColor: 'skyblue' }} >
             <Text style={styles.text}>Weather go info goes here</Text>
                 
                 <WeatherWidget
