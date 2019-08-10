@@ -2,7 +2,7 @@
 Mobile App to ease the workload while gardening. Accomplished by using ESP8266 controllers and Web data to inform user to take action in the garden.
 
 ## Installation
-### For Mobil
+### For Mobile
 ```bash
 Clone Repository
 ```

@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { AppRegistry, View, Text, StyleSheet, Alert, TouchableHighlight } from 'react-native';
-import ReactWeather from 'react-open-weather';
- 
+
+
+
+
+
 export default class FlexDimensionsBasics extends Component {
   render() {
     return (

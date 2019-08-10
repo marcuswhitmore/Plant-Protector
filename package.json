@@ -23,6 +23,7 @@
     "expo-web-browser": "^5.0.0",
     "firebase": "^6.3.4",
     "native-base": "^2.13.4",
+    "nexmo": "^2.4.1",
     "react": "16.8.3",
     "react-darksky-map": "^0.1.0",
     "react-dom": "^16.8.6",
