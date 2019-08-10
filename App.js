@@ -33,8 +33,24 @@ export default function App(props) {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [Authenticated,setAuthentication] =useState(false);
+  firebase.auth().signOut().then(function() {
+    // Sign-out successful.
+  }).catch(function(error) {
+    // An error happened.
+  });
+  var user = firebase.auth().currentUser;
+  
   
 
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user != null) {
+      alert(user.email);
+      console.log("We are authenticated now!");
+    }
+  
+    // Do other things
+  });
+  
   
   registerUser = event => {
    
@@ -42,14 +58,7 @@ export default function App(props) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
-      }).then(()=>  firebase.auth().onAuthStateChanged(function(user) {
-        console.log(user);
-        if (user != null) {
-         setAuthentication(true);
-        } else {
-          console.log("u suck");
-        }
-      }))};
+      })};
       
       signInUser = event => {
         
@@ -60,13 +69,9 @@ export default function App(props) {
             // Handle Errors here.
             var errorCode = error.code;
             var errorMessage = error.message;
-          }).then(()=>  firebase.auth().onAuthStateChanged(function(user) {
-            if (user !=null) {
-             setAuthentication(true);
-            } else {
-              console.log("u suck");
-            }
-          }))};
+          })};
+            
+          
 
   if (!isLoadingComplete && !props.skipLoadingScreen) {
     return (
@@ -126,9 +131,6 @@ export default function App(props) {
           </TouchableHighlight>
         </View>
     )
-
-    
-
   } else {
     return (
       <View style={styles.container}>
