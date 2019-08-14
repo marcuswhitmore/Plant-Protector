@@ -56,7 +56,7 @@ export default class LoginView extends Component {
             }
           })};
 
-  onClickListener = event => {
+  registerUser = event => {
     firebase
       .auth()
       .createUserWithEmailAndPassword(this.state.email, this.state.password)
@@ -116,7 +116,7 @@ export default class LoginView extends Component {
 
         <TouchableHighlight
           style={styles.buttonContainer}
-          onPress={() => this.onClickListener("register")}
+          onPress={() => this.registerUser}
         >
           <Text>Register</Text>
         </TouchableHighlight>
