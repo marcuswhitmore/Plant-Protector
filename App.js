@@ -8,25 +8,20 @@ import { Platform, StatusBar, StyleSheet, ViewStyleSheet, Text,View,TextInput, B
 import { Ionicons } from '@expo/vector-icons';
 import firebase from './utils/firebase';
 
-// var firebaseConfig = {
-//   apiKey: "AIzaSyC3FmjDz7y6_cQE4zWrwguoCqCe7HxgT9M",
-//   authDomain: "plant-protector-27ea5.firebaseapp.com",
-//   databaseURL: "https://plant-protector-27ea5.firebaseio.com",
-//   projectId: "plant-protector-27ea5",
-//   storageBucket: "",
-//   messagingSenderId: "6658779484",
-//   appId: "1:6658779484:web:d7b4e231f598a527"
-// };
-// Initialize Firebase
-
-//import { Lottie } from 'lottie-react-native';
-
-//mport API_KEY from '../utils/WeatherAPIKey';
-//import Weather from '../components/Weather';
+ ////var firebaseConfig = {
+ ////  apiKey: "AIzaSyC3FmjDz7y6_cQE4zWrwguoCqCe7HxgT9M",
+ ////  authDomain: "plant-protector-27ea5.firebaseapp.com",
+ ////  databaseURL: "https://plant-protector-27ea5.firebaseio.com",
+ ////  projectId: "plant-protector-27ea5",
+ ////  storageBucket: "",
+ ////  messagingSenderId: "6658779484",
+ ////  appId: "1:6658779484:web:d7b4e231f598a527"
+ ////};
+//Initialize Firebase
 
 import AppNavigator from './navigation/AppNavigator';
 
-// firebase.initializeApp(firebaseConfig);
+//firebase.initializeApp(firebaseConfig);
 export default function App(props) {
   
   
