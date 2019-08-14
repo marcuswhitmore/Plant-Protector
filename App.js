@@ -8,7 +8,6 @@ import { Platform, StatusBar, StyleSheet, ViewStyleSheet, Text,View,TextInput, B
 import { Ionicons } from '@expo/vector-icons';
 import firebase from "./utils/firebase";
 
-//Initialize Firebase
 
 import AppNavigator from './navigation/AppNavigator';
 
@@ -22,30 +21,6 @@ export default function App(props) {
   // const [username, setUserName] = useState("");
   // const [password, setPassword] = useState("");
 
-
-
- 
-
-  
-  // registerUser = event => {
-   
-  //     firebase.auth().createUserWithEmailAndPassword(username, password).catch(function(error) {
-  //       // Handle Errors here.
-  //       var errorCode = error.code;
-  //       var errorMessage = error.message;
-  //     })};
-      
-  //     signInUser = event => {
-        
-  //       firebase
-  //         .auth()
-  //         .signInWithEmailAndPassword(username, password)
-  //         .catch(function(error) {
-  //           // Handle Errors here.
-  //           var errorCode = error.code;
-  //           var errorMessage = error.message;
-  //         })};
-            
           
 
   if (!isLoadingComplete && !props.skipLoadingScreen) {
