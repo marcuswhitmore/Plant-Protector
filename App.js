@@ -9,8 +9,6 @@ import { Ionicons } from '@expo/vector-icons';
 import firebase from "./utils/firebase";
 
 
-
-
 import AppNavigator from './navigation/AppNavigator';
 
 //firebase.initializeApp(firebaseConfig);
