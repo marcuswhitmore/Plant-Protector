@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { FlatList, Text, StyleSheet, Image, View } from 'react-native';
+import firebase from "../utils/firebase"
+import '@firebase/firestore';
 
 const rows = [
   { id: 0, cultivar: 'Carolina Reaper', scoville: ' 10000 SHU' },
@@ -10,8 +12,17 @@ const rows = [
 ]
 
 const extractKey = ({ id}) => id.toString()
+var user = firebase.auth().currentUser;
+
+console.log(user);
+const db = firebase.firestore();
+
+
+
 
 export default class App extends Component {
+  
+  
 
   renderItem = ({ item }) => {
     return (
