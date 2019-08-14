@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import firebase from "../utils/firebase";
 import App from "../App";
+//import console = require("console");
 // import * as firebase from 'firebase';
 
 // var firebaseConfig = {
@@ -48,6 +49,7 @@ export default class LoginView extends Component {
              var errorMessage = error.message;
           }).then(()=>{
             var user = firebase.auth().currentUser;
+            console.log(user);
 
             if (user) {
                 this.props.navigation.navigate('Main')
@@ -116,7 +118,7 @@ export default class LoginView extends Component {
 
         <TouchableHighlight
           style={styles.buttonContainer}
-          onPress={() => this.registerUser}
+          onPress={this.registerUser}
         >
           <Text>Register</Text>
         </TouchableHighlight>
