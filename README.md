@@ -59,7 +59,5 @@ UX/UI Iterations
 
 ### Raspberry Pi for Styling
 
-### Wireframes and Planning
-
 ![details](assets/images/details.png)
 
