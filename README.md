@@ -1,5 +1,3 @@
-## [(VIEW APP)](https://plant-protector-working.herokuapp.com/)
-
 ![Logo](assets/images/logo.svg)
 
 # Plant-Protector
@@ -58,12 +56,3 @@ UX/UI Iterations
 ![initial mockup](assets/images/mockup1.gif)
 
 ![working mockup](assets/images/mockup-2.gif)
-
-
-## Final Design ****USE GIF***** - NEED THESE SCREEN SHOTS OF FINAL
-
-![alt](assets/img/mockups-final.gif)
-
-
-## API Server Routes
-## Challenges
