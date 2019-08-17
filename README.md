@@ -57,7 +57,7 @@ UX/UI Iterations
 
 ![working mockup](assets/images/mockup-2.gif)
 
-### Raspberry Pi for Styling
+### Using Raspberry Pi
 
 ![details](assets/images/details.png)
 
