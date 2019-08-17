@@ -12,19 +12,9 @@ import {
 import firebase from "../utils/firebase";
 import App from "../App";
 //import console = require("console");
+//import console = require("console");
 // import * as firebase from 'firebase';
 
-// var firebaseConfig = {
-//   apiKey: "AIzaSyC3FmjDz7y6_cQE4zWrwguoCqCe7HxgT9M",
-//   authDomain: "plant-protector-27ea5.firebaseapp.com",
-//   databaseURL: "https://plant-protector-27ea5.firebaseio.com",
-//   projectId: "plant-protector-27ea5",
-//   storageBucket: "",
-//   messagingSenderId: "6658779484",
-//   appId: "1:6658779484:web:d7b4e231f598a527"
-// };
-// // Initialize Firebase
-// firebase.initializeApp(firebaseConfig);
 
 
 
@@ -49,10 +39,11 @@ export default class LoginView extends Component {
              var errorMessage = error.message;
           }).then(()=>{
             var user = firebase.auth().currentUser;
-            console.log(user);
+            
 
             if (user) {
                 this.props.navigation.navigate('Main')
+                console.log(user)
             } else {
               // No user is signed in.
             }
@@ -109,12 +100,7 @@ export default class LoginView extends Component {
           <Text style={styles.loginText}>Login</Text>
         </TouchableHighlight>
 
-        <TouchableHighlight
-          style={styles.buttonContainer}
-          onPress={() => this.onClickListener("restore_password")}
-        >
-          <Text>Forgot your password?</Text>
-        </TouchableHighlight>
+       
 
         <TouchableHighlight
           style={styles.buttonContainer}
